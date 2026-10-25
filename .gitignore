@@ -1,0 +1,6 @@
+preview/
+node_modules/
+.DS_Store
+/docs/private/
+/packages/react/dist/
+/packages/react/LICENSE

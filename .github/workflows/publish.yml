@@ -1,0 +1,43 @@
+name: Publish npm package
+
+"on":
+  push:
+    tags:
+      - "v*"
+
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'yz13-dev/icons' && github.ref_name != 'v0.1.0'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.0"
+      - run: bun install --frozen-lockfile
+      - name: Verify release commit
+        run: |
+          git fetch origin main:refs/remotes/origin/main
+          git merge-base --is-ancestor HEAD origin/main
+      - name: Verify release metadata
+        run: node scripts/assert-release.mjs "$GITHUB_REF_NAME"
+      - run: bun run check
+      - run: npm install --global npm@^11.5.1
+      - run: npm pack --dry-run
+        working-directory: packages/react
+      - run: npm publish --access public
+        working-directory: packages/react
