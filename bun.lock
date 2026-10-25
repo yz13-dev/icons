@@ -6,6 +6,7 @@
       "name": "yz13-icons-workspace",
       "devDependencies": {
         "@types/react": "^19",
+        "@yz13/icons": "workspace:*",
         "oxfmt": "0.61.0",
         "oxlint": "1.82.0",
         "react": "^19",
