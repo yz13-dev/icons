@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [0.2.0] - 2026-10-27
+
 ### Added
 
 - `arrow-down`
