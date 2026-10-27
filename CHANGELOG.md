@@ -4,6 +4,24 @@
 
 ## Unreleased
 
+### Added
+
+- `arrow-down`
+- `arrow-down-left`
+- `arrow-down-right`
+- `arrow-left`
+- `arrow-right`
+- `arrow-up`
+- `arrow-up-left`
+- `arrow-up-right`
+- `chevron-left`
+- `chevron-right`
+- `chevron-up`
+- `copy`
+- `external-link`
+- `layout-grid`
+- `trash`
+
 ## [0.1.0] - 2026-10-25
 
 ### Added
